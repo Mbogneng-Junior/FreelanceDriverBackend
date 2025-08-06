@@ -1,0 +1,14 @@
+# Ce fichier ne gère QUE la base de données.
+services:
+  scylla-db:
+    image: scylladb/scylla:latest
+    container_name: scylla-node-dev
+    # Expose le port 9042 du conteneur sur le port 9042 de votre machine (localhost)
+    ports:
+      - "9042:9042"
+    command: --smp 1 --memory 1G --developer-mode 1
+    volumes:
+      - scylla_data:/var/lib/scylla
+
+volumes:
+  scylla_data:
